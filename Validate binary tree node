@@ -7,6 +7,16 @@ class Solution {
         nodeQueue.offer(root);
         visited[root] = true;
 
+            // Check left child
+            if (leftChild[current] != -1) {
+                if (visited[leftChild[current]]) // Check for cycle
+                    return false;
+
+                nodeQueue.offer(leftChild[current]);
+                visited[leftChild[current]] = true; // Mark left child as visited
+            }
+
+
         while (!nodeQueue.isEmpty()) {
             int current = nodeQueue.poll();
 
